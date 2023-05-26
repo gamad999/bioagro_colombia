@@ -19,14 +19,9 @@ WHERE ST_Intersects(municipios_clase_valle.geom, municipios_valle.geom);
 
 --- Geoprocesamiento de capa de ecosistema suelos del Valle del Cauca ---
 
----  Creación de tabla para realizar intersección entre las capas de suelos y municipios ---
 
-CREATE TABLE ecosistema_suelos_valle(
-id SERIAL PRIMARY KEY, cod_su2004 varchar(15), bioma1996 varchar(60), bioma2010 varchar(60), 
-cod_ecosis varchar(7), nom_ecosis varchar(100), zona varchar(3), anno_eco_e int, anno_eco_a int,
-anno_eco_g int, nom_su2004 varchar(60), taxo_2004 varchar(30), piso_ter_e varchar(1), prov_hum_e varchar(2),
-cod_perfil varchar(10), clase_unid varchar(2), tipo_estud varchar(2), erosion_es varchar(3), 
-pend_estud varchar(10), prof_efect varchar(3), limitante varchar(2), fertilidad varchar(2),
-orden_suel varchar(2), gran_grupo varchar(6), subgrupo varchar(15), suborden varchar(3), por_domina int,
-grupo_mane int, unidad_uso varchar(8), factor_k double precision, anno_sue_e int, anno_sue_a int,
-mpio_cdpmp varchar(5), mpio_clase varchar(22), nombre_munic varchar(50), geom geometry(MultiPolygon, 3115));
+								  
+
+
+
+
