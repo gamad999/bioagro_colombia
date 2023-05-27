@@ -14,7 +14,11 @@ WHERE ST_Intersects(municipios_clase_valle.geom, municipios_valle.geom);
 
 --- Geoprocesamiento de capa de ecosistema suelos del Valle del Cauca ---
 
+--- Calculo de areas en hectareas ------
 
+ALTER TABLE ecosistema_suelos_valle ADD COLUMN area_has double precision;
+
+UPDATE ecosistema_suelos_valle SET area_has = (SELECT ST_Area(ecosistema_suelos_valle.geom)/10000.0);
 								  
 
 
