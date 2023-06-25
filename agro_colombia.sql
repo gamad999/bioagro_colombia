@@ -8,7 +8,11 @@ ALTER TABLE municipios_valle ADD COLUMN area_has double precision;
 
 UPDATE municipios_valle SET area_has = (ST_Area(municipios_valle.geom) / 10000);
 
+--- Segmentacion de Municipios por zona de UGT Valle ---
 
+ALTER TABLE municipios_valle ADD COLUMN zona varchar(40);
+
+UPDATE municipios_valle SET zona = 'Norte' WHERE mpio_cnmbr = 'LA UNIÓN'
 
 --- Enlace espacial entre capas de municipios y municipios clase para migrar nombres de entidades territoriales 
 --- a capa de municipios clase
