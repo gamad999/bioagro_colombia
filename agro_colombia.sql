@@ -2,7 +2,13 @@
 
 -- Creación de extension PostGIS en la base de datos Agro Colombia
 
-CREATE EXTENSION postgis;
+--- Calculo de areas de Municipios en hectareas -----
+
+ALTER TABLE municipios_valle ADD COLUMN area_has double precision;
+
+UPDATE municipios_valle SET area_has = (ST_Area(municipios_valle.geom) / 10000);
+
+
 
 --- Enlace espacial entre capas de municipios y municipios clase para migrar nombres de entidades territoriales 
 --- a capa de municipios clase
