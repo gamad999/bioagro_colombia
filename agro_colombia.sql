@@ -33,6 +33,11 @@ ADD COLUMN fert_moder_porcent double precision, ADD COLUMN fert_baja_has double 
 ADD COLUMN fert_baja_porcent double precision, ADD COLUMN fert_muybaja_has double precision,
 ADD COLUMN fert_muybaja_porcent double precision;
 
+-- Cálculo de area en hectareas de suelos con fertilidad muy alta por Municipio
 UPDATE municipios_valle SET fert_muyalta_has = (SELECT SUM(ST_Area(ST_Intersection(ecosistema_suelos_resumido.geom, municipios_valle.geom))) / 10000
 from ecosistema_suelos_resumido WHERE ST_Intersects(ecosistema_suelos_resumido.geom, municipios_valle.geom) AND
 ecosistema_suelos_resumido.fertilidad = 'MA');
+
+-- Cálculo de porcentaje de áreas con fertilidad muy alta con respecto a total de cada Municipio
+
+UPDATE municipios_valle SET fert_muyalta_porcent = (fert_muyalta_has / area_has) * 100;
