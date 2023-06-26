@@ -41,3 +41,63 @@ ecosistema_suelos_resumido.fertilidad = 'MA');
 -- Cálculo de porcentaje de áreas con fertilidad muy alta con respecto a total de cada Municipio
 
 UPDATE municipios_valle SET fert_muyalta_porcent = (fert_muyalta_has / area_has) * 100;
+
+-- Ajuste de valores nulos a cero (0) hectareas ---
+
+UPDATE municipios_valle SET fert_muyalta_has = 0 WHERE fert_muyalta_has IS NULL;
+UPDATE municipios_valle SET fert_muyalta_porcent = 0 WHERE fert_muyalta_has = 0;
+
+-- Cálculo de área en hectareas de suelos con fertilidad alta por Municipio ----
+
+UPDATE municipios_valle SET fert_alta_has = (SELECT SUM(ST_Area(ST_Intersection(ecosistema_suelos_resumido.geom, municipios_valle.geom))) / 10000
+FROM ecosistema_suelos_resumido WHERE ST_Intersects(ecosistema_suelos_resumido.geom, municipios_valle.geom) AND
+ecosistema_suelos_resumido.fertilidad = 'A');
+
+-- Cálculo de porcentaje de áreas de suelo con fertilidad alta con respecto a total de cada Municipio
+
+UPDATE municipios_valle SET fert_alta_porcent = (fert_alta_has / area_has) * 100;
+
+-- Ajuste de valores nulos a cero (0) hectareas ---
+
+UPDATE municipios_valle SET fert_alta_has = 0 WHERE fert_alta_has IS NULL;
+UPDATE municipios_valle SET fert_alta_porcent = 0 WHERE fert_alta_has = 0;
+
+-- Cálculo de área en hectareas de suelo con fertilidad moderada por Municipio ----
+
+UPDATE municipios_valle SET fert_moder_has = (SELECT SUM(ST_Area(ST_Intersection(ecosistema_suelos_resumido.geom, municipios_valle.geom))) / 10000
+FROM ecosistema_suelos_resumido WHERE ST_Intersects(ecosistema_suelos_resumido.geom, municipios_valle.geom) AND
+ecosistema_suelos_resumido.fertilidad = 'M');
+
+-- Cálculo de porcentaje de áreas de suelo con fertilidad moderada con respecto a total de cada Municipio
+
+UPDATE municipios_valle SET fert_moder_porcent = (fert_moder_has / area_has) * 100;
+
+-- Cálculo de áreas en hectareas de suelo con fertilidad baja por Municipio ----
+
+UPDATE municipios_valle SET fert_baja_has = (SELECT SUM(ST_Area(ST_Intersection(ecosistema_suelos_resumido.geom, municipios_valle.geom))) / 10000
+FROM ecosistema_suelos_resumido WHERE ST_Intersects(ecosistema_suelos_resumido.geom, municipios_valle.geom) AND
+ecosistema_suelos_resumido.fertilidad = 'B');
+
+-- Cálculo de porcentaje en hectareas de suelo con fertilidad baja con respecto a total de cada Municipio
+
+UPDATE municipios_valle SET fert_baja_porcent = (fert_baja_has / area_has) * 100;
+
+-- Ajuste de valores nulos a cero (0) hectareas ---
+
+UPDATE municipios_valle SET fert_baja_has = 0 WHERE fert_baja_has IS NULL;
+UPDATE municipios_valle SET fert_baja_porcent = 0 WHERE fert_baja_has = 0;
+
+-- Cálculo de áreas en hectareas de suelo con fertilidad muy baja por Municipio ---
+
+UPDATE municipios_valle SET fert_muybaja_has = (SELECT SUM(ST_Area(ST_Intersection(ecosistema_suelos_resumido.geom, municipios_valle.geom))) / 10000
+FROM ecosistema_suelos_resumido WHERE ST_Intersects(ecosistema_suelos_resumido.geom, municipios_valle.geom) AND
+ecosistema_suelos_resumido.fertilidad = 'MB');
+
+-- Cálculo de porcentaje en hectareas de suelo con fertilidad muy baja con respecto a total de cada Municipio
+
+UPDATE municipios_valle SET fert_muybaja_porcent = (fert_muybaja_has / area_has) * 100;
+
+-- Ajuste de valores nulos a cero (0) hectareas ---
+
+UPDATE municipios_valle SET fert_muybaja_has = 0 WHERE fert_muybaja_has IS NULL;
+UPDATE municipios_valle SET fert_muybaja_porcent = 0 WHERE fert_muybaja_has = 0;
