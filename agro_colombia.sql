@@ -101,3 +101,9 @@ UPDATE municipios_valle SET fert_muybaja_porcent = (fert_muybaja_has / area_has)
 
 UPDATE municipios_valle SET fert_muybaja_has = 0 WHERE fert_muybaja_has IS NULL;
 UPDATE municipios_valle SET fert_muybaja_porcent = 0 WHERE fert_muybaja_has = 0;
+
+-- Construcción de tabla de resultados de area de suelos en hectareas clasificadas por fertilidad para cada Municipio
+
+SELECT mpio_cnmbr AS municipio, area_has AS area_total, fert_muyalta_has, fert_muyalta_porcent, fert_alta_has, fert_alta_porcent,
+fert_moder_has, fert_moder_porcent, fert_baja_has, fert_baja_porcent, fert_muybaja_has, fert_muybaja_porcent
+FROM municipios_valle;
