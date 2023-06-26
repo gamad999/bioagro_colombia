@@ -22,3 +22,17 @@ ALTER TABLE ecosistema_suelos_resumido ADD COLUMN area_has double precision;
 
 UPDATE ecosistema_suelos_resumido SET area_has = (ST_Area(ecosistema_suelos_resumido.geom) / 10000);
 
+--- Cálculo de estadísticas de fertilidad de suelos por Municipio medidas en hectareas y porcentaje del total municipal ---
+--- Prueba de calculo con las funciones ST_Area, ST_Intersection y  ST_Intersects para el cálculo de areas---
+--- con fertilidad muy alta por municipio
+
+ALTER TABLE municipios_valle ADD COLUMN fert_muyalta_has double precision,
+ADD COLUMN fert_muyalta_porcent double precision, ADD COLUMN fert_alta_has double precision,
+ADD COLUMN fert_alta_porcent double precision, ADD COLUMN fert_moder_has double precision,
+ADD COLUMN fert_moder_porcent double precision, ADD COLUMN fert_baja_has double precision,
+ADD COLUMN fert_baja_porcent double precision, ADD COLUMN fert_muybaja_has double precision,
+ADD COLUMN fert_muybaja_porcent double precision;
+
+UPDATE municipios_valle SET fert_muyalta_has = (SELECT SUM(ST_Area(ST_Intersection(ecosistema_suelos_resumido.geom, municipios_valle.geom))) / 10000
+from ecosistema_suelos_resumido WHERE ST_Intersects(ecosistema_suelos_resumido.geom, municipios_valle.geom) AND
+ecosistema_suelos_resumido.fertilidad = 'MA');
