@@ -18,6 +18,11 @@ WHERE ST_Intersects(seccion_rural.geom, municipios_valle.geom);
 SELECT municipio, SUM(stp27_pers) AS pob_rural FROM seccion_rural
 GROUP BY municipio ORDER BY pob_rural DESC;
 
+-- Construccion de tabla de numero de hogares comandados por mujeres por municipio ----
+
+SELECT municipio, SUM(jef_mujr) AS HogJfMujr FROM seccion_rural
+GROUP BY municipio ORDER BY HogJfMujr DESC;
+
 
 
 
