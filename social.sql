@@ -23,6 +23,12 @@ GROUP BY municipio ORDER BY pob_rural DESC;
 SELECT municipio, SUM(jef_mujr) AS HogJfMujr FROM seccion_rural
 GROUP BY municipio ORDER BY HogJfMujr DESC;
 
+--- Construcción de tabla de número de hogares rurales en loa cuales reside por lo menos una persona con limitaciones
+--- físicas a nivel de Municipios 
+
+SELECT municipio, SUM(persconlim) AS PersLimit FROM seccion_rural
+GROUP BY municipio ORDER BY PersLimit DESC;
+
 
 
 
