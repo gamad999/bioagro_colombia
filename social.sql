@@ -11,7 +11,7 @@ UPDATE seccion_rural SET area_has = (ST_Area(seccion_rural.geom) / 10000);
 ALTER TABLE seccion_rural ADD COLUMN municipio varchar(40);
 
 UPDATE seccion_rural SET municipio = municipios_valle.mpio_cnmbr FROM municipios_valle
-WHERE ST_Intersects(seccion_rural.geom, municipios_valle.geom);
+WHERE seccion_rural.mpio_cdpmp = municipios_valle.mpio_ccdgo;
 
 --- Construccion de tabla de población rural por Municipio de acuerdo a datos de secciones rurales Censo 2018 ---
 
@@ -28,8 +28,4 @@ GROUP BY municipio ORDER BY HogJfMujr DESC;
 
 SELECT municipio, SUM(persconlim) AS PersLimit FROM seccion_rural
 GROUP BY municipio ORDER BY PersLimit DESC;
-
-
-
-
 
