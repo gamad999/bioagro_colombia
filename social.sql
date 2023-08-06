@@ -84,8 +84,10 @@ UPDATE seccion_rural SET pob_menor = pb_ed0_9 + pb_ed10_19;
 UPDATE seccion_rural SET pob_adult_may = pb_ed50_59 + pb_ed60_69 + pb_ed70_79 + pb_ed80;
 
 --- Construccion de tablas de indicadores estadisticos por municipios y secciones rurales
-
-
+--- Estadisticas de población en edad productiva por municipio
+SELECT municipio, SUM(pob_ed_prod) AS pob_ed_productiva, SUM(pob_total) AS pob_total, 
+SUM(pob_ed_prod)*1.0/SUM(pob_total) * 100.0 AS porc
+FROM seccion_rural GROUP BY municipio ORDER BY pob_ed_productiva DESC, pob_total, porc;
 
 
 
