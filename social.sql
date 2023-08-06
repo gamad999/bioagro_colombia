@@ -44,3 +44,49 @@ ADD COLUMN nv_postgrd int, ADD COLUMN nv_ninguno int, ADD COLUMN undmx_agro int,
 ADD COLUMN unid_agro int, ADD COLUMN vvsn_acue int, ADD COLUMN vvsn_alct int,
 ADD COLUMN vvsn_gas int, ADD COLUMN vvsn_rcbas int, ADD COLUMN vvsn_inter int;
 
+--- Asignación de nombres de facil interpretación a campos de capa de secciones rurales ---
+
+UPDATE seccion_rural SET viviendas = stvivienda; 
+UPDATE seccion_rural SET hogaress = tsp16_hog;
+UPDATE seccion_rural SET pob_total = stp27_pers;
+UPDATE seccion_rural SET pob_homb = stp32_1_se;
+UPDATE seccion_rural SET pob_mujr = stp32_2_se;
+UPDATE seccion_rural SET pb_ed0_9 = stp34_1_ed;
+UPDATE seccion_rural SET pb_ed10_19 = stp34_2_ed;
+UPDATE seccion_rural SET pb_ed20_29 = stp34_3_ed;
+UPDATE seccion_rural SET pb_ed30_39 = stp34_4_ed;
+UPDATE seccion_rural SET pb_ed40_49 = stp34_5_ed;
+UPDATE seccion_rural SET pb_ed50_59 = stp34_6_ed;
+UPDATE seccion_rural SET pb_ed60_69 = stp34_7_ed;
+UPDATE seccion_rural SET pb_ed70_79 = stp34_8_ed;
+UPDATE seccion_rural SET pb_ed80 = stp34_9_ed;
+UPDATE seccion_rural SET nv_prim = stp51_prim;
+UPDATE seccion_rural SET nv_secund = stp51_secu;
+UPDATE seccion_rural SET nv_profes = stp51_supe;
+UPDATE seccion_rural SET nv_postgrd = stp51_post;
+UPDATE seccion_rural SET nv_ninguno = stp51_13_e;
+UPDATE seccion_rural SET undmx_agro = stp9_2_4_m;
+UPDATE seccion_rural SET unid_agro = stp9_3_4_n;
+UPDATE seccion_rural SET vvsn_acue = stp19_acu2;
+UPDATE seccion_rural SET vvsn_alct = stp19_alc2;
+UPDATE seccion_rural SET vvsn_gas = stp19_gas2;
+UPDATE seccion_rural SET vvsn_rcbas = stp19_rec2;
+UPDATE seccion_rural SET vvsn_inter = stp19_int2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
