@@ -73,6 +73,18 @@ UPDATE seccion_rural SET vvsn_gas = stp19_gas2;
 UPDATE seccion_rural SET vvsn_rcbas = stp19_rec2;
 UPDATE seccion_rural SET vvsn_inter = stp19_int2;
 
+--- Calculo de indicadores de población en edad productiva (20 a 49 años) ---
+--- población menor de edad (0 a 19 años) y población adulto mayor (50 o mas años)
+
+ALTER TABLE seccion_rural ADD COLUMN pob_ed_prod int, ADD COLUMN pob_menor int,
+ADD COLUMN pob_adult_may int;
+
+UPDATE seccion_rural SET pob_ed_prod = pb_ed20_29 + pb_ed30_39 + pb_ed40_49;
+UPDATE seccion_rural SET pob_menor = pb_ed0_9 + pb_ed10_19;
+UPDATE seccion_rural SET pob_adult_may = pb_ed50_59 + pb_ed60_69 + pb_ed70_79 + pb_ed80;
+
+--- Construccion de tablas de indicadores estadisticos por municipios y secciones rurales
+
 
 
 
