@@ -1,8 +1,32 @@
-"bioma1996","especies","records"
-"Selva Subandina",290,871
-"Selva Andina",147,376
-"Subxerofitico",70,158
-"Selva Pluvial",65,197
-"Bosque Seco y Humedales",52,93
-"Selva Inundable",7,10
-"Paramo",7,68
+"nom_ecosistema","especies","records"
+"Bosque medio humedo en montana fluvio-gravitacional",229,571
+"Bosque frio muy humedo en montana fluvio-gravitacional",94,231
+"Bosque frio humedo en montana fluvio-gravitacional",65,128
+"Bosque calido pluvial en lomerio fluvio-gravitacional",53,152
+"Arbustales y matorrales medio muy seco en montana fluvio-gravitacional",52,116
+"Bosque medio muy humedo en montana fluvio-gravitacional",33,54
+"Arbustales y matorrales medio seco en lomerio estructural-erosional",30,68
+"Bosque calido muy humedo en montana fluvio-gravitacional",28,87
+"Arbustales y matorrales calido muy seco en montana fluvio-gravitacional",26,42
+"Bosque calido seco en piedemonte aluvial",23,39
+"Arbustales y matorrales medio seco en montana fluvio-gravitacional",21,38
+"Bosque calido muy humedo en lomerio-fluvio-gravitacional",18,41
+"Arbustales y matorrales medio humedo en piedemonte coluvio-aluvial",13,16
+"Bosque calido humedo en montana fluvio-gravitacional",11,19
+"Bosque muy frio humedo en montana fluvio-gravitacional",10,12
+"Bosque medio humedo en piedemonte diluvial",10,14
+"Bosque medio seco en montana fluvio-gravitacional",9,14
+"Bosque calido humedo en piedemonte coluvio-aluvial",8,12
+"Bosque calido seco en planicie aluvial",8,13
+"Bosque inundable calido pluvial en planicie fluvio-marina",7,10
+"Bosque calido seco en lomerio fluvio-lacustre",4,5
+"Bosque muy frio muy humedo en montana fluvio-gravitacional",4,5
+"Bosque muy frio pluvial en montana fluvio-glacial",4,56
+"Bosque calido seco en piedemonte coluvio-aluvial",3,3
+"Bosque calido humedo en planicie aluvial",2,2
+"Bosque medio humedo en montana estructural-erosional",2,6
+"Herbazales y pajonales muy frio muy humedo en montana fluvio-glacial",2,9
+"Bosque inundable calido seco en planicie aluvial",1,2
+"Herbazales y pajonales extremadamente frio pluvial en montana fluvio-glacial",1,3
+"Bosque calido pluvial en planicie marina",1,4
+"Arbustales y matorrales calido seco en piedemonte aluvial",0,1
