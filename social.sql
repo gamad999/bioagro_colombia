@@ -85,12 +85,35 @@ UPDATE seccion_rural SET pob_adult_may = pb_ed50_59 + pb_ed60_69 + pb_ed70_79 + 
 
 --- Construccion de tablas de indicadores estadisticos por municipios y secciones rurales
 --- Estadisticas de población en edad productiva por municipio
+
 SELECT municipio, SUM(pob_ed_prod) AS pob_ed_productiva, SUM(pob_total) AS pob_total, 
 SUM(pob_ed_prod)*1.0/SUM(pob_total) * 100.0 AS porc
 FROM seccion_rural GROUP BY municipio ORDER BY pob_ed_productiva DESC, pob_total, porc;
 
+--- Estadísticas de nivel educativo de población rural por Municipio
 
+SELECT municipio, SUM(nv_prim) AS primaria, SUM(nv_secund) AS secundaria, SUM(nv_profes) AS profesional,
+SUM(nv_postgrd) AS postgrado, SUM(nv_ninguno) AS ninguno FROM seccion_rural
+GROUP BY municipio ORDER BY primaria DESC, secundaria , profesional, postgrado, ninguno;
 
+--- Estadisticas de unidades mixtas y predios con usos agropecuario, agroindustrial o forestal por Municipio
+
+SELECT municipio, SUM(undmx_agro) AS unid_mx_agro, SUM(unid_agro) AS predios_agro
+FROM seccion_rural GROUP BY municipio ORDER BY predios_agro DESC, unid_mx_agro;
+
+--- Estadisticas de numero de viviendas rurales sin servicio de acueducto ---
+
+SELECT municipio, SUM(vvsn_acue) AS vvsn_acue, SUM(viviendas) AS tot_viviendas, 
+(SUM(vvsn_acue)*1.0/SUM(viviendas))*100.0 AS porc FROM seccion_rural
+GROUP BY municipio ORDER BY vvsn_acue DESC, tot_viviendas, porc;
+
+--- Estadísticas de número de viviendas rurales sin servicio de alcantarillado ----
+
+SELECT municipio, SUM(vvsn_alct) AS vvsn_alct, SUM(viviendas) AS tot_viviendas,
+(SUM(vvsn_alct)*1.0/SUM(viviendas))*100.0 AS porc FROM seccion_rural
+GROUP BY municipio ORDER BY vvsn_alct DESC, tot_viviendas, porc;
+
+--- Estadísticas de número de viviendas rurales sin servicio de gas natural conectado a la red pública ---
 
 
 
