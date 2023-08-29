@@ -12,3 +12,7 @@ ALTER TABLE catastro_rural_valle ADD COLUMN nomb_municipio varchar(80);
 
 UPDATE catastro_rural_valle SET nomb_municipio = municipios_valle.mpio_cnmbr FROM municipios_valle
 WHERE catastro_rural_valle.codigo_mun = municipios_valle.mpio_ccdgo;
+
+--- Cálculo de área total en hectareas por Municipio de predios rurales reportados por el IGAC --- 
+SELECT nomb_municipio AS municipio, SUM(area_has) AS area_has FROM catastro_rural_valle
+GROUP BY nomb_municipio ORDER BY area_has DESC;
