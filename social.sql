@@ -161,4 +161,11 @@ FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_inasist_escolar DESC, pob_to
 
 SELECT municipio, SUM(prinf_cnpv) AS priv_cuid_prim_infancia, SUM(pob_total) AS pob_total, (SUM(prinf_cnpv)/SUM(pob_total))*100.0 AS prc_priv_cuid_prm_inf
 FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_cuid_prim_infancia DESC, pob_total, prc_priv_cuid_prm_inf;
+
+--- Consolidación de estadisticas por Municipio de dimension del Indice de Pobreza Multidimensional rural ---
+--- específicamente privación por trabajo infantil: una persona se considera privada si pertenece a un hogar ---
+--- que tiene al menos un niño entre 12 y 17 años trabajando ---
+
+SELECT municipio, SUM(trbinf_cnp) AS priv_trab_infantil, SUM(pob_total) AS pob_total, (SUM(trbinf_cnp)/SUM(pob_total))*100.0 AS prc_priv_trab_infantil
+FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_trab_infantil DESC, pob_total, prc_priv_trab_infantil;
 																			   
