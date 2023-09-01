@@ -118,12 +118,18 @@ GROUP BY municipio ORDER BY vvsn_alct DESC, tot_viviendas, porc;
 
 
 
+--- Desarrollo de base de datos de la metodología de Indice de Pobreza Multidimensional IPM según DANE para ---
+--- secciones rurales MGN Valle del Cauca utiles para alistamiento social de expedientes ANT de adjudicación de --
+--- baldíos a campesinos --- diagnostico social de variables levantadas en el Censo Nacional de Población y ---
+--- Vivienda 2018 por el DANE --- MGN: Marco Geoestadístico Nacional -----
+--- Integración de la capa seccion_rural_ipm como resultado de proceso de consulta y ajuste de datos IPM segun ---
+--- Boletín Técnico de Pobreza Multidimensional en Colombia 2018 DANE para relacionar datos de secciones rurales y datos IPM--
+--- Consulta de datos en Portal REDATAM DANE Censo Poblacional 2018 ---
 
 
+--- Consulta de poblacion (numero de personas residentes en hogares considerados por IPM como hogares con privaciones) ---
+--- por Municipio y porcentaje con respecto al total municipal ---
 
-
-
-
-
-
-
+SELECT municipio, SUM(con_priv) AS hab_con_priv, SUM(pob_total) AS pob_total, (SUM(con_priv)/SUM(pob_total))*100.0 AS porc_hab_priv
+FROM sec_rural_ipm GROUP BY municipio ORDER BY hab_con_priv DESC, pob_total, porc_hab_priv;
+																			   
