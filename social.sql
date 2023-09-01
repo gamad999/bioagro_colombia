@@ -132,4 +132,11 @@ GROUP BY municipio ORDER BY vvsn_alct DESC, tot_viviendas, porc;
 
 SELECT municipio, SUM(con_priv) AS hab_con_priv, SUM(pob_total) AS pob_total, (SUM(con_priv)/SUM(pob_total))*100.0 AS porc_hab_priv
 FROM sec_rural_ipm GROUP BY municipio ORDER BY hab_con_priv DESC, pob_total, porc_hab_priv;
+
+--- Consolidación de estadísticas por Municipio de dimension 1 del Indice de Pobreza Multidimensional rural específicamente---
+--- privacion por logro educativo: una persona se considera privada si pertenece a un hogar en donde la educación ---
+--- promedio de las personas mayores de 15 años es menor a 9 años de educación ----
+
+SELECT municipio, SUM(d1_con_pri) AS logro_educ_priv, SUM(pob_total) AS pob_total, (SUM(d1_con_pri)/SUM(pob_total))*100.0 AS porc_log_educ_priv
+FROM sec_rural_ipm GROUP BY municipio ORDER BY logro_educ_priv DESC, pob_total, porc_log_educ_priv;
 																			   
