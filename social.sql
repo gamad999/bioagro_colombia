@@ -153,4 +153,12 @@ FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_analfabet DESC, pob_total, p
 
 SELECT municipio, SUM(inesc_cnpv) AS priv_inasist_escolar, SUM(pob_total) AS pob_total, (SUM(inesc_cnpv)/SUM(pob_total))*100.0 AS prc_priv_inesc
 FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_inasist_escolar DESC, pob_total, prc_priv_inesc;
+
+--- Consolidacion de estadisticas por Municipio de dimension del Indice de Pobreza Multidimensional rural ----
+--- específicamente privación por acceso a servicios para el cuidado de la primera infancia: ----
+--- una persona se considera privada, si pertenece a un hogar que tiene, al menos un niño de 0 a 5 años ---
+--- sin acceso a todos los servicios de cuidado integral (salud, nutrición y cuidado) ----
+
+SELECT municipio, SUM(prinf_cnpv) AS priv_cuid_prim_infancia, SUM(pob_total) AS pob_total, (SUM(prinf_cnpv)/SUM(pob_total))*100.0 AS prc_priv_cuid_prm_inf
+FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_cuid_prim_infancia DESC, pob_total, prc_priv_cuid_prm_inf;
 																			   
