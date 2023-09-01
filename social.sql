@@ -139,4 +139,11 @@ FROM sec_rural_ipm GROUP BY municipio ORDER BY hab_con_priv DESC, pob_total, por
 
 SELECT municipio, SUM(d1_con_pri) AS logro_educ_priv, SUM(pob_total) AS pob_total, (SUM(d1_con_pri)/SUM(pob_total))*100.0 AS porc_log_educ_priv
 FROM sec_rural_ipm GROUP BY municipio ORDER BY logro_educ_priv DESC, pob_total, porc_log_educ_priv;
+
+--- Consolidación de estadísticas por Municipio de dimension 1 del Indice de Pobreza Multidimensional rural específicamente ---
+--- privación por analfabetismo: una persona se considera privada si pertenece a un hogar en el que hay, al menos ---
+--- una persona mayor de 15 años que no sabe leer y escribir ----
+
+SELECT municipio, SUM(d1_analf_c) AS priv_analfabet, SUM(pob_total) AS pob_total, (SUM(d1_analf_c)/SUM(pob_total))*100.0 AS prc_priv_analfb
+FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_analfabet DESC, pob_total, prc_priv_analfb;
 																			   
