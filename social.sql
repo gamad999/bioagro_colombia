@@ -146,4 +146,11 @@ FROM sec_rural_ipm GROUP BY municipio ORDER BY logro_educ_priv DESC, pob_total, 
 
 SELECT municipio, SUM(d1_analf_c) AS priv_analfabet, SUM(pob_total) AS pob_total, (SUM(d1_analf_c)/SUM(pob_total))*100.0 AS prc_priv_analfb
 FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_analfabet DESC, pob_total, prc_priv_analfb;
+
+--- Consolidacion de estadisticas por Municipio de dimension  del Indice de Pobreza Multidimensional rural ---
+--- específicamente inasistencia escolar: una persona se considera privada si pertenece a un hogar que tiene ---
+--- al menos un niño de 6 a 16 años que no asiste a una institución educativa ----
+
+SELECT municipio, SUM(inesc_cnpv) AS priv_inasist_escolar, SUM(pob_total) AS pob_total, (SUM(inesc_cnpv)/SUM(pob_total))*100.0 AS prc_priv_inesc
+FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_inasist_escolar DESC, pob_total, prc_priv_inesc;
 																			   
