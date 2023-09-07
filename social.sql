@@ -169,3 +169,10 @@ FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_cuid_prim_infancia DESC, pob
 SELECT municipio, SUM(trbinf_cnp) AS priv_trab_infantil, SUM(pob_total) AS pob_total, (SUM(trbinf_cnp)/SUM(pob_total))*100.0 AS prc_priv_trab_infantil
 FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_trab_infantil DESC, pob_total, prc_priv_trab_infantil;
 																			   
+--- Consolidación de estadisticas por Municipio de dimension del Indice de Pobreza Multidimensional rural ---
+--- específicamente privación por acceso a fuente de agua mejorada: una persona se considera privada si pertenece a un hogar ---
+--- que no cuenta con servicio de acueducto. En el caso de los hogares rurales, una persona se considera ---
+--- privada si el agua la obtiene de pozo sin bomba, agua lluvia, río, manantial, carrotanque, aguatero u otra fuente ---
+
+SELECT municipio, SUM(agua_cnpv) AS priv_agua, SUM(pob_total) AS pob_total, (SUM(agua_cnpv)/SUM(pob_total))*100.0 AS prc_priv_agua
+FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_agua DESC, pob_total, prc_priv_agua;
