@@ -176,3 +176,14 @@ FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_trab_infantil DESC, pob_tota
 
 SELECT municipio, SUM(agua_cnpv) AS priv_agua, SUM(pob_total) AS pob_total, (SUM(agua_cnpv)/SUM(pob_total))*100.0 AS prc_priv_agua
 FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_agua DESC, pob_total, prc_priv_agua;
+
+--- Consolidación de estadisticas por Municipio de dimension del Indice de Pobreza Multidimensional rural ---
+--- específicamente privación por inadecuada eliminación de excretas: una persona se considera privada si pertenece a un hogar ---
+--- que no cuenta con servicio público de alcantarillado. En el caso de los hogares rurales, una persona se considera ---
+--- privada si cuenta con inodoro sin conexión, bajamar o no tiene servicio sanitario ---
+
+SELECT municipio, SUM(excr_cnpv) AS priv_excr, SUM(pob_total) AS pob_total, (SUM(excr_cnpv)/SUM(pob_total))*100.0 AS prc_priv_excr
+FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_excr DESC, pob_total, prc_priv_excr;
+
+
+
