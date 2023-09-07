@@ -185,5 +185,10 @@ FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_agua DESC, pob_total, prc_pr
 SELECT municipio, SUM(excr_cnpv) AS priv_excr, SUM(pob_total) AS pob_total, (SUM(excr_cnpv)/SUM(pob_total))*100.0 AS prc_priv_excr
 FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_excr DESC, pob_total, prc_priv_excr;
 
+--- Consolidación de estadisticas por Municipio de dimension del Indice de Pobreza Multidimensional rural ---
+--- específicamente privación por hacinamiento crítico: una persona se considera privada si pertenece a un hogar ---
+--- donde hay 3 o mas personas por cuarto. Un hogar rural se considera en privación si hay mas de 3 personas por cuarto ---
 
+SELECT municipio, SUM(hccrt_cnpv) AS priv_haccrit, SUM(pob_total) AS pob_total, (SUM(hccrt_cnpv)/SUM(pob_total))*100.0 AS prc_priv_haccrit
+FROM sec_rural_ipm GROUP BY municipio ORDER BY priv_haccrit DESC, pob_total, prc_priv_haccrit;
 
