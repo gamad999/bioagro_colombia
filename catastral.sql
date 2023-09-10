@@ -24,6 +24,11 @@ GROUP BY nomb_municipio ORDER BY area_has DESC, num_predios, area_minima_has, ar
 SELECT destino_ec, SUM(area_has) AS area_total_has, COUNT(DISTINCT id) AS num_predios
 FROM catastro_rural_valle GROUP BY destino_ec ORDER BY area_total_has DESC, num_predios;
 
+--- Cálculo de área total en hectáreas de predios rurales reportados con destinación económica Agropecuario
+--- para cada municipio del departamento del Valle del Cauca. ---
 
-
+SELECT nomb_municipio, SUM(area_has) AS area_has, COUNT(DISTINCT id) AS num_predios_agro,
+MIN(area_has) AS area_minima_pred_agro, MAX(area_has) AS area_maxima_pred_agro
+FROM catastro_rural_valle WHERE destino_ec = 'D' 
+GROUP BY nomb_municipio ORDER BY area_has DESC, num_predios_agro, area_minima_pred_agro, area_maxima_pred_agro;
 
