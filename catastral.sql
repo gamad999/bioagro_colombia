@@ -32,3 +32,14 @@ MIN(area_has) AS area_minima_pred_agro, MAX(area_has) AS area_maxima_pred_agro
 FROM catastro_rural_valle WHERE destino_ec = 'D' 
 GROUP BY nomb_municipio ORDER BY area_has DESC, num_predios_agro, area_minima_pred_agro, area_maxima_pred_agro;
 
+--- Cálculo de área total en hectáreas de predios rurales con destinación económica agropecuario 
+--- por cada categoría de fertilidad de suelos definida por la Corporación Autónoma Regional del Valle del Cauca CVC 
+--- para cada municipio del departamento.
+
+--- Fertilidad de suelos Muy Alta ---
+SELECT nomb_municipio, (SUM(ST_Area(ST_Intersection(ecosistema_suelos_resumido.geom, catastro_rural_valle.geom)))/10000.0)
+AS area_pred_fert_muy_alta FROM ecosistema_suelos_resumido, catastro_rural_valle 
+WHERE ST_Intersects(ecosistema_suelos_resumido.geom, catastro_rural_valle.geom) AND
+catastro_rural_valle.destino_ec = 'D' AND ecosistema_suelos_resumido.fertilidad = 'MA'
+GROUP BY nomb_municipio ORDER BY area_pred_fert_muy_alta DESC;
+
