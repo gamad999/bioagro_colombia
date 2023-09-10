@@ -19,4 +19,11 @@ MIN(area_has) AS area_minima_has, MAX(area_has) AS area_maxima_has
 FROM catastro_rural_valle
 GROUP BY nomb_municipio ORDER BY area_has DESC, num_predios, area_minima_has, area_maxima_has;
 
+--- Cálculo de área total en hectareas de predios rurales por categoria de destinación económica ---
+
+SELECT destino_ec, SUM(area_has) AS area_total_has, COUNT(DISTINCT id) AS num_predios
+FROM catastro_rural_valle GROUP BY destino_ec ORDER BY area_total_has DESC, num_predios;
+
+
+
 
