@@ -38,8 +38,8 @@ GROUP BY nomb_municipio ORDER BY area_has DESC, num_predios_agro, area_minima_pr
 
 --- Fertilidad de suelos Muy Alta, Alta, Moderada, Baja y Muy Baja ---
 SELECT nomb_municipio, (SUM(ST_Area(ST_Intersection(ecosistema_suelos_resumido.geom, catastro_rural_valle.geom)))/10000.0)
-AS area_pred_fert_baja FROM ecosistema_suelos_resumido, catastro_rural_valle 
+AS area_pred_fert_muy_baja FROM ecosistema_suelos_resumido, catastro_rural_valle 
 WHERE ST_Intersects(ecosistema_suelos_resumido.geom, catastro_rural_valle.geom) AND
-catastro_rural_valle.destino_ec = 'D' AND ecosistema_suelos_resumido.fertilidad = 'B'
-GROUP BY nomb_municipio ORDER BY area_pred_fert_baja DESC;
+catastro_rural_valle.destino_ec = 'D' AND ecosistema_suelos_resumido.fertilidad = 'MB'
+GROUP BY nomb_municipio ORDER BY area_pred_fert_muy_baja DESC;
 
